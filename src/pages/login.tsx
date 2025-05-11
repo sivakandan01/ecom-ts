@@ -18,9 +18,16 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useState } from "react";
 import { Login, Register } from "@/api/userApi";
+import { useDispatch } from "react-redux";
+import type { AppDispatch } from "@/store/store";
+import { setUser } from "@/store/slice/userSlice";
+import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
   const [activeTab, setActiveTab] = useState<string>("Login");
+  const navigate = useNavigate()
+
+  const dispatch = useDispatch<AppDispatch>()
 
   type LoginForm = { email: string; password: string };
   type RegisterForm = {
@@ -74,18 +81,19 @@ const LoginPage = () => {
   const HandleSubmit = async () => {
     if (activeTab === "Login") {
       const response = await Login(loginData);
-      console.log(response);
+      dispatch(setUser(response.data.data))
+      navigate('/')
     } else {
       const response = await Register(registerData);
       console.log(response);
-      setActiveTab("Login")
+      setActiveTab("Login");
     }
-    HandleClear()
+    HandleClear();
   };
 
   return (
-    <div className="mt-[5%] ml-[30%]">
-      <Tabs defaultValue="login" className="w-[400px]">
+    <div className="mt-[5%] ml-[35%]">
+      <Tabs defaultValue="login" className="min-w-[400px] w-[40%]">
         <TabsList className="grid w-full grid-cols-2">
           <TabsTrigger value="login" onClick={() => setActiveTab("Login")}>
             Login
@@ -122,8 +130,8 @@ const LoginPage = () => {
               </div>
             </CardContent>
             <CardFooter className="flex justify-between">
-              <Button onClick={HandleClear}>Reset</Button>
-              <Button onClick={HandleSubmit}>Login</Button>
+              <Button className="bg-gray-600" onClick={HandleClear}>Reset</Button>
+              <Button className="bg-blue-600" onClick={HandleSubmit}>Login</Button>
             </CardFooter>
           </Card>
         </TabsContent>
@@ -185,8 +193,8 @@ const LoginPage = () => {
               )}
             </CardContent>
             <CardFooter className="flex justify-between">
-              <Button onClick={HandleClear}>Reset</Button>
-              <Button onClick={HandleSubmit}>Register</Button>
+              <Button className="bg-gray-600" onClick={HandleClear}>Reset</Button>
+              <Button className="bg-blue-600" onClick={HandleSubmit}>Register</Button>
             </CardFooter>
           </Card>
         </TabsContent>
