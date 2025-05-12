@@ -20,7 +20,7 @@ const MainLayout = ({ children }: MainProp) => {
       <AppSidebar />
       <div className="flex flex-col flex-1">
         <Header />
-        <main className="flex-1 p-4 overflow-auto">
+        <main className="flex-1 p-4">
           <SidebarInset>{children}</SidebarInset>
         </main>
       </div>
