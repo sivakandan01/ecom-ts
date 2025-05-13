@@ -57,7 +57,27 @@ type TotalTableProp<T> = {
     action?: (row: SelectedProp) => React.ReactNode;
 }
 
+type AddCartProp = {
+    productId: string,
+    productName: string,
+    userId: string,
+    price: number,
+    quantity: number
+}
+
+type UpdateCartProp = {
+    id: string,
+    productId: string,
+    productName: string,
+    userId: string,
+    price: number,
+    quantity : number,
+    createdAt: string,
+    updatedAt: string
+}
+
 export { base_url }
+
 export type { 
   LoginForm, 
   RegisterForm, 
@@ -65,5 +85,7 @@ export type {
   HeaderItem,
   SelectedProp,
   TotalTableProp,
-  UserItem
+  UserItem,
+  AddCartProp,
+  UpdateCartProp
 }

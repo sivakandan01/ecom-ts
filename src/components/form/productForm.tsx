@@ -1,6 +1,6 @@
 import type { SelectedProp } from "@/lib/utils";
 import { useState } from "react";
-import { TextInput, NumberInput } from "../custom-input";
+import { TextInput, NumberInput } from "../InputTags";
 
 type formProp = {
   data: SelectedProp;

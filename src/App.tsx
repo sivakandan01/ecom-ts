@@ -8,6 +8,7 @@ import type { RootState } from "./store/store";
 import { MainLayout } from "./components/layout/mainLoayout";
 import { CompanyModule } from "./pages/company";
 import { AdminModule } from "./pages/admin";
+import { Cart } from "./pages/cart";
 
 const App = () => {
   const navigate = useNavigate();
@@ -32,6 +33,7 @@ const App = () => {
                 <Route path="/" element={<Main />} />
                 <Route path="/company" element={<CompanyModule />} />
                 <Route path="/admin" element={<AdminModule />} />
+                <Route path="/cart" element={<Cart />} />
               </Routes>
             </MainLayout>
           }

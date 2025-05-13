@@ -1,5 +1,5 @@
 import { Calendar, Home, Inbox, Search, Settings } from "lucide-react";
-import { NavUser } from "../nav-user";
+import { NavUser } from "../NavUser";
 import {
     Sidebar,
     SidebarContent,

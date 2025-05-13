@@ -106,11 +106,11 @@ const LoginPage = () => {
           </TabsTrigger>
         </TabsList>
         <TabsContent value="login">
-          <Card>
-            <CardHeader>
+          <Card className="space-y-6">
+            <CardHeader className="flex justify-center">
               <CardTitle>Login</CardTitle>
             </CardHeader>
-            <CardContent className="space-y-2">
+            <CardContent className="space-y-6">
               <div className="space-y-2">
                 <Label>Email</Label>
                 <Input
@@ -136,11 +136,11 @@ const LoginPage = () => {
           </Card>
         </TabsContent>
         <TabsContent value="register">
-          <Card>
-            <CardHeader>
+          <Card className="space-y-6">
+            <CardHeader className="flex justify-center">
               <CardTitle>Register</CardTitle>
             </CardHeader>
-            <CardContent className="space-y-2">
+            <CardContent className="space-y-6">
               <div className="space-y-2">
                 <Label>Username</Label>
                 <Input
