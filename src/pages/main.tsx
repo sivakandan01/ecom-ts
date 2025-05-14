@@ -8,7 +8,7 @@ import type { RootState } from "@/store/store";
 
 const Main = () => {
     const [products, setProducts] = useState<SelectedProp[]>([]);
-    const [quantity, setQuantity] = useState<number>(0);
+    // const [quantity, setQuantity] = useState<number>(1);
     const [searchTerm, setSearchTerm] = useState<string>("");
 
     const { userData } = useSelector((state: RootState) => state.user)
@@ -28,21 +28,13 @@ const Main = () => {
                 productId: row.id,
                 productName: row.name,
                 userId: userData.id,
-                price: row.price * quantity,
-                quantity: quantity
+                price: row.price,
+                quantity: 1
             }
             const response = await AddToCart(data);
             console.log(response);
         } catch (err) {
             console.log("Error adding to Cart", err);
-        }
-    };
-
-    const AddMinus = (type: string) => {
-        if (type === "add" && quantity < 9) {
-            setQuantity((prev) => prev + 1);
-        } else if (type === "minus" && quantity > 0) {
-            setQuantity((prev) => prev - 1);
         }
     };
 
@@ -65,40 +57,28 @@ const Main = () => {
                     placeholder="Search Here ..."
                 />
             </div>
-            <div className="grid grid-cols-4 gap-4">
+            <div className={`grid md:w-[700px] md:grid-cols-4 grid-cols-7 gap-8`}>
                 {filteredProduct.map((product) => (
                     <Card className="w-full" key={product.id}>
-                        <CardContent>
+                        <CardContent className="">
                             <div>
                                 <img
                                     src="/src/assets/shdcn.jpg"
-                                    className="w-full"
+                                    className="w-full rounded-t-md"
                                 />
-                                <div className="flex justify-between mt-2">
+                                <div className="flex justify-between px-3 mt-2">
                                     <p>{product.name}</p>
                                     <p>₹{product.price}</p>
                                 </div>
                             </div>
                         </CardContent>
                         <CardFooter>
-                            <div className="flex justify-between w-full">
+                            <div className="flex justify-between py-2 px-3 w-full">
                                 <button
-                                    className="py-1 px-2 bg-gray-400 hover:bg-gray-200 rounded-md"
-                                    onClick={() => AddMinus("minus")}
-                                >
-                                    -
-                                </button>
-                                <button
-                                    className="py-1 px-2 bg-blue-400 hover:bg-green-400 text-white rounded-md"
+                                    className="bg-blue-400 hover:bg-gray-300 hover:text-black w-full py-1 text-white rounded-md"
                                     onClick={() => AddCart(product)}
                                 >
                                     Add To Cart
-                                </button>
-                                <button
-                                    className="py-1 px-2 bg-gray-400 hover:bg-gray-200 rounded-md"
-                                    onClick={() => AddMinus("add")}
-                                >
-                                    +
                                 </button>
                             </div>
                         </CardFooter>

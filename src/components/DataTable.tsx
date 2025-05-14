@@ -10,7 +10,7 @@ import type { HeaderItem, TotalTableProp } from "@/lib/utils"
 
 const TableData = <T,>({header, data, action} : TotalTableProp<T> ) => {
     return(
-        <Table>
+        <Table className="border border-gray-300 rounded-md shadow-lg">
             <TableHeader className="bg-gray-100">
                 <TableRow>
                     {header.map((head: HeaderItem) =>

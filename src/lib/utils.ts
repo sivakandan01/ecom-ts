@@ -54,7 +54,7 @@ type UserItem = {
 type TotalTableProp<T> = {
     header: HeaderItem[], 
     data: T[],
-    action?: (row: SelectedProp) => React.ReactNode;
+    action?: (row: T) => React.ReactNode;
 }
 
 type AddCartProp = {
