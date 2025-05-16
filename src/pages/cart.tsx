@@ -8,16 +8,12 @@ import {
 } from "@/components/ui/card";
 import {
     Dialog,
-    DialogContent,
-    DialogDescription,
-    DialogFooter,
-    DialogHeader,
-    DialogTitle,
 } from "@/components/ui/dialog";
 import type { HeaderItem, UpdateCartProp } from "@/lib/utils";
 import type { RootState } from "@/store/store";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import { DialogBox } from "@/components/ownComponent/DialogBox";
 
 const Cart = () => {
     const [cartData, setCartData] = useState<UpdateCartProp[]>([]);
@@ -84,6 +80,10 @@ const Cart = () => {
         );
     };
 
+    const HandleCancel = () => {
+        setOpenDialog(false)
+    }
+
     return (
         <div className="p-6 flex flex-row">
             <div className="w-[70%] rounded-md">
@@ -122,28 +122,12 @@ const Cart = () => {
             </div>
 
             <Dialog open={openDialog} onOpenChange={setOpenDialog}>
-                <DialogContent className="w-[350px]">
-                    <DialogHeader className="space-y-2">
-                        <DialogTitle>Confirm Deletion</DialogTitle>
-                        <DialogDescription>
-                            Are you sure you want to delete?
-                        </DialogDescription>
-                    </DialogHeader>
-                    <DialogFooter className="w-full flex justify-between gap-x-4">
-                        <button
-                            className="border border-gray-400 py-1 px-2 rounded-md hover:bg-gray-200"
-                            onClick={() => setOpenDialog(false)}
-                        >
-                            Cancel
-                        </button>
-                        <button
-                            onClick={DeleteProductInCart}
-                            className="bg-red-500 text-white py-1 px-2 rounded-md"
-                        >
-                            Delete
-                        </button>
-                    </DialogFooter>
-                </DialogContent>
+                <DialogBox
+                    title="Confirm Deletion"
+                    body="Are you sure you want to delete?"
+                    onCancel={HandleCancel}
+                    onSubmit={DeleteProductInCart}
+                />
             </Dialog>
         </div>
     );

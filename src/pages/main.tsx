@@ -73,7 +73,7 @@ const Main = () => {
                             </div>
                         </CardContent>
                         <CardFooter>
-                            <div className="flex justify-between py-2 px-3 w-full">
+                            <div className="flex justify-between py-2 px-2 w-full">
                                 <button
                                     className="bg-blue-400 hover:bg-gray-300 hover:text-black w-full py-1 text-white rounded-md"
                                     onClick={() => AddCart(product)}

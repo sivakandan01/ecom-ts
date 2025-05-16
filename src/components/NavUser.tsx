@@ -94,7 +94,7 @@ const NavUser = ({ user }: NavUserProps ) => {
                 </div>
               </div>
             </DropdownMenuLabel>
-            <DropdownMenuItem>
+            <DropdownMenuItem onClick={() => navigate("/profile")}>
               <CircleUserRound />
               Profile
             </DropdownMenuItem>

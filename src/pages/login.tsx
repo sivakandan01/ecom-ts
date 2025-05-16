@@ -106,11 +106,11 @@ const LoginPage = () => {
           </TabsTrigger>
         </TabsList>
         <TabsContent value="login">
-          <Card className="space-y-6">
+          <Card className="space-y-6 py-6">
             <CardHeader className="flex justify-center">
               <CardTitle>Login</CardTitle>
             </CardHeader>
-            <CardContent className="space-y-6">
+            <CardContent className="space-y-6 px-5">
               <div className="space-y-2">
                 <Label>Email</Label>
                 <Input
@@ -129,18 +129,18 @@ const LoginPage = () => {
                 />
               </div>
             </CardContent>
-            <CardFooter className="flex justify-between">
+            <CardFooter className="flex justify-between px-5">
               <Button className="bg-gray-600" onClick={HandleClear}>Reset</Button>
               <Button className="bg-blue-600" onClick={HandleSubmit}>Login</Button>
             </CardFooter>
           </Card>
         </TabsContent>
         <TabsContent value="register">
-          <Card className="space-y-6">
+          <Card className="space-y-6 py-4">
             <CardHeader className="flex justify-center">
               <CardTitle>Register</CardTitle>
             </CardHeader>
-            <CardContent className="space-y-6">
+            <CardContent className="space-y-6 px-5">
               <div className="space-y-2">
                 <Label>Username</Label>
                 <Input
@@ -192,7 +192,7 @@ const LoginPage = () => {
                 </div>
               )}
             </CardContent>
-            <CardFooter className="flex justify-between">
+            <CardFooter className="flex justify-between px-5">
               <Button className="bg-gray-600" onClick={HandleClear}>Reset</Button>
               <Button className="bg-blue-600" onClick={HandleSubmit}>Register</Button>
             </CardFooter>
