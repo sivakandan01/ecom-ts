@@ -10,6 +10,7 @@ import { CompanyModule } from "../pages/company";
 import { AdminModule } from "../pages/admin";
 import { Cart } from "../pages/cart";
 import { Profile } from "../pages/profile";
+import { History } from "@/pages/history";
 
 const App = () => {
   const navigate = useNavigate();
@@ -36,6 +37,7 @@ const App = () => {
                 <Route path="/admin" element={<AdminModule />} />
                 <Route path="/cart" element={<Cart />} />
                 <Route path="/profile" element={<Profile />} />
+                <Route path="/history" element={<History />} />
               </Routes>
             </MainLayout>
           }

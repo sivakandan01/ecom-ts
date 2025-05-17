@@ -6,10 +6,11 @@ import {
     SelectContent,
     SelectItem,
     SelectTrigger,
-    SelectValue
+    SelectValue,
 } from "@/components/ui/select";
 import type { HeaderItem, SelectedProp, UserItem } from "@/lib/utils";
 import { useEffect, useState } from "react";
+import { Button } from "@/components/customComponent/Button";
 
 const AdminModule = () => {
     const [activeTab, setActiveTab] = useState<string>("users");
@@ -104,30 +105,40 @@ const AdminModule = () => {
         return matchesSearch && matchesCompany && matchesProductType;
     });
 
+    const HandleTab = () => {
+        if (activeTab === "users") {
+            setActiveTab("products");
+        } else {
+            setActiveTab("users");
+        }
+    };
+
     return (
         <div className="p-4">
             <div>
                 <h3 className="font-medium text-[16px]">Admin Module</h3>
             </div>
-            <div className="mt-2">
-                <button
-                    onClick={() => setActiveTab("users")}
-                    className={`
-                    py-1 px-2
-                    ${activeTab === "users" ? "border-b-2 border-gray-600" : ""}
-            `}
-                >
-                    Users
-                </button>
-                <button
-                    onClick={() => setActiveTab("products")}
-                    className={`
-                    py-1 px-2 ml-4
-                    ${activeTab === "products" ? "border-b-2 border-gray-600": ""}
-            `}
-                >
-                    Products
-                </button>
+            <div className="mt-2 flex flex-row">
+                <Button
+                    text="Users"
+                    click={HandleTab}
+                    classname={`${
+                        activeTab === "users"
+                            ? "border-b-2 border-gray-600 rounded-none"
+                            : ""
+                    }`}
+                    type="button"
+                />
+                <Button
+                    text="Products"
+                    click={HandleTab}
+                    classname={` ml-3 ${
+                        activeTab === "products"
+                            ? "border-b-2 border-gray-600 rounded-none"
+                            : ""
+                    }`}
+                    type="button"
+                />
             </div>
             <div className="mt-2.5 flex justify-between">
                 <input

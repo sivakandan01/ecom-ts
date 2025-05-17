@@ -1,12 +1,13 @@
 import type React from "react"
 
 const TextInput = (
-    { onchange, name, value, label } : 
+    { onchange, name, value, label, disabled } : 
     {
         onchange: (e: React.ChangeEvent<HTMLInputElement>) => void, 
         name: string, 
         value: string | undefined,
-        label: string
+        label: string,
+        disabled?: boolean
     }
 ) => {
     return(
@@ -17,7 +18,10 @@ const TextInput = (
                 onChange={onchange}
                 name={name} 
                 value={value}
-                className="w-[320px] border border-gray-400 h-[36px] px-2 rounded-md mt-1"
+                className=
+                {`w-[320px] h-[36px] px-2 mt-1 border border-gray-400 rounded-md
+                ${disabled? "bg-gray-100": ""}`}
+                disabled={disabled}
             />
         </div>
     )

@@ -5,13 +5,14 @@ import {
     DialogDescription,
     DialogFooter,
 } from "../ui/dialog";
+import { Button } from "./Button";
 
 type DialogProp = {
-    title: string,
-    body: string,
-    onCancel: () => void,
-    onSubmit: () => void
-}
+    title: string;
+    body: string;
+    onCancel: () => void;
+    onSubmit: () => void;
+};
 
 const DialogBox = ({ title, body, onCancel, onSubmit }: DialogProp) => {
     return (
@@ -21,18 +22,18 @@ const DialogBox = ({ title, body, onCancel, onSubmit }: DialogProp) => {
                 {body && <DialogDescription>{body}</DialogDescription>}
             </DialogHeader>
             <DialogFooter className="w-full flex justify-between gap-x-4">
-                <button
-                    className="border border-gray-400 py-1 px-2 rounded-md hover:bg-gray-200"
-                    onClick={onCancel}
-                >
-                    Cancel
-                </button>
-                <button
-                    onClick={onSubmit}
-                    className="bg-red-500 text-white py-1 px-2 rounded-md"
-                >
-                    Delete
-                </button>
+                <Button
+                    type="button"
+                    click={onCancel}
+                    classname="border border-gray-400 py-1 hover:bg-gray-200 w-[80px]"
+                    text="Cancel"
+                />
+                <Button
+                    text="Delete"
+                    click={onSubmit}
+                    type="button"
+                    classname="bg-red-600 hover:bg-red-400 text-white w-[80px]"
+                />
             </DialogFooter>
         </DialogContent>
     );

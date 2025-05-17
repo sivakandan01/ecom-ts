@@ -38,8 +38,8 @@ const items = [
         icon: Search,
     },
     {
-        title: "Settings",
-        url: "/settings",
+        title: "History",
+        url: "/history",
         icon: Settings,
     },
 ];
