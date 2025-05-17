@@ -76,6 +76,11 @@ type UpdateCartProp = {
     updatedAt: string
 }
 
+type ErrorProp = {
+    success: boolean,
+    message: string
+}
+
 export { base_url }
 
 export type { 
@@ -87,5 +92,6 @@ export type {
   TotalTableProp,
   UserItem,
   AddCartProp,
-  UpdateCartProp
+  UpdateCartProp,
+  ErrorProp
 }

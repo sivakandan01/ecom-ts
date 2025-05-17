@@ -1,6 +1,6 @@
 import { ShoppingCart } from "lucide-react";
 import { SidebarTrigger } from "@/components/ui/sidebar";
-import { Separator } from "../ui/separator";
+import { Separator } from "@/components/ui/separator";
 import { useNavigate } from "react-router-dom";
 
 const Header = () => {

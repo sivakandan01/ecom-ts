@@ -5,7 +5,7 @@ const TextInput = (
     {
         onchange: (e: React.ChangeEvent<HTMLInputElement>) => void, 
         name: string, 
-        value: string,
+        value: string | undefined,
         label: string
     }
 ) => {

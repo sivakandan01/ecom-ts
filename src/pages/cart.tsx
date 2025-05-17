@@ -1,4 +1,4 @@
-import { DeleteCart, FetchCartByUserId } from "@/api/cartApi";
+import { DeleteCart, FetchCartByUserId } from "@/services/cartApi";
 import { TableData } from "@/components/DataTable";
 import {
     Card,
@@ -13,7 +13,9 @@ import type { HeaderItem, UpdateCartProp } from "@/lib/utils";
 import type { RootState } from "@/store/store";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { DialogBox } from "@/components/ownComponent/DialogBox";
+import { DialogBox } from "@/components/customComponent/DialogBox";
+import { toast } from "sonner";
+import { Toast } from "@/hooks/custom-toast/toast";
 
 const Cart = () => {
     const [cartData, setCartData] = useState<UpdateCartProp[]>([]);
@@ -22,11 +24,9 @@ const Cart = () => {
     const [selectedRow, setSelectedRow] = useState<UpdateCartProp | null>(null);
     const [total, setTotal] = useState<number>(0)
 
-    const userId = userData.id || null;
-
     const FetchData = async () => {
         try {
-            const response = await FetchCartByUserId(userId);
+            const response = await FetchCartByUserId(userData.id);
 
             if (response.data.success) {
                 setCartData(response.data.data);
@@ -58,6 +58,12 @@ const Cart = () => {
                 if (response) {
                     console.log(response);
                 }
+                toast(
+                    <Toast 
+                        body="Item Removed From Cart Successfully"
+                    />,
+                    { unstyled: true }
+                )
             }
             FetchData()
         } catch (err) {

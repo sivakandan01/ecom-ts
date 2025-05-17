@@ -1,7 +1,7 @@
 import { useLocation } from "react-router-dom";
 import { Header } from "./Header";
 import { AppSidebar } from "./Sidebar";
-import { SidebarInset } from "../ui/sidebar";
+import { SidebarInset } from "../components/ui/sidebar";
 
 type MainProp = {
   children: React.ReactNode;

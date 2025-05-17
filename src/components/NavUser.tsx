@@ -24,7 +24,7 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar"
-import type { userData } from "./layout/Sidebar"
+import type { userData } from "../layout/Sidebar"
 import { useDispatch } from "react-redux"
 import type { AppDispatch } from "@/store/store"
 import { setUser } from "@/store/slice/userSlice"

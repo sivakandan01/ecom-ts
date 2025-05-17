@@ -1,15 +1,15 @@
 import { Routes, Route, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
-import LoginPage from "./pages/login";
-import Main from "./pages/main";
-import { SidebarProvider } from "./components/ui/sidebar";
-import type { RootState } from "./store/store";
-import { MainLayout } from "./components/layout/mainLoayout";
-import { CompanyModule } from "./pages/company";
-import { AdminModule } from "./pages/admin";
-import { Cart } from "./pages/cart";
-import { Profile } from "./pages/profile";
+import LoginPage from "../pages/login";
+import Main from "../pages/main";
+import { SidebarProvider } from "../components/ui/sidebar";
+import type { RootState } from "../store/store";
+import { MainLayout } from "../layout/mainLayout";
+import { CompanyModule } from "../pages/company";
+import { AdminModule } from "../pages/admin";
+import { Cart } from "../pages/cart";
+import { Profile } from "../pages/profile";
 
 const App = () => {
   const navigate = useNavigate();

@@ -17,7 +17,7 @@ import {
 } from "@/components/ui/select";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useState } from "react";
-import { Login, Register } from "@/api/userApi";
+import { Login, Register } from "@/services/userApi";
 import { useDispatch } from "react-redux";
 import type { AppDispatch } from "@/store/store";
 import { setUser } from "@/store/slice/userSlice";

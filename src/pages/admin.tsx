@@ -1,14 +1,14 @@
-import { FetchProducts } from "@/api/productApi";
-import { FetchUsers } from "@/api/userApi";
+import { FetchProducts } from "@/services/productApi";
+import { FetchUsers } from "@/services/userApi";
 import { TableData } from "@/components/DataTable";
 import {
     Select,
     SelectContent,
     SelectItem,
     SelectTrigger,
+    SelectValue
 } from "@/components/ui/select";
 import type { HeaderItem, SelectedProp, UserItem } from "@/lib/utils";
-import { SelectValue } from "@radix-ui/react-select";
 import { useEffect, useState } from "react";
 
 const AdminModule = () => {
@@ -17,7 +17,7 @@ const AdminModule = () => {
     const [users, setUsers] = useState<UserItem[]>([]);
     const [products, setProducts] = useState<SelectedProp[]>([]);
     const [companyOptions, setCompanyOptions] = useState<string[]>([]);
-    const [productOptions, setProductyOptions] = useState<string[]>([]);
+    const [productOptions, setProductOptions] = useState<string[]>([]);
     const [tempCompany, setTempCompany] = useState<string>("All");
     const [tempRole, setTempRole] = useState<string>("All");
     const [tempProductType, setTempProductType] = useState<string>("All");
@@ -47,7 +47,7 @@ const AdminModule = () => {
                 setProducts(productResponse.data.data);
 
                 const options: string[] = [];
-                const productoptions: string[] = [];
+                const productOptions: string[] = [];
 
                 for (const user of userResponse.data.data) {
                     const name = user.companyName?.trim();
@@ -57,16 +57,16 @@ const AdminModule = () => {
                 }
 
                 for (const product of productResponse.data.data) {
-                    if (!productoptions.includes(product.productType)) {
-                        productoptions.push(product.productType);
+                    if (!productOptions.includes(product.productType)) {
+                        productOptions.push(product.productType);
                     }
                 }
 
                 setCompanyOptions(options);
-                setProductyOptions(productoptions);
+                setProductOptions(productOptions);
             }
         } catch (err) {
-            console.log("error fecthing data", err);
+            console.log("error fetching data", err);
         }
     };
 
@@ -89,7 +89,7 @@ const AdminModule = () => {
         return matchesSearch && matchesCompany && matchesRole;
     });
 
-    const Filteredproducts = products.filter((product) => {
+    const FilteredProducts = products.filter((product) => {
         const matchesSearch =
             product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
             product.companyName
@@ -132,7 +132,7 @@ const AdminModule = () => {
             <div className="mt-2.5 flex justify-between">
                 <input
                     type="text"
-                    name="searchterm"
+                    name="searchTerm"
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                     className="px-2 h-[36px] w-[280px] border border-gray-400 rounded-md"
@@ -208,7 +208,7 @@ const AdminModule = () => {
                     </div>
                 </div>
             </div>
-            <div className="w-full border border-gray-300 mt-4 rounded-md">
+            <div className="w-full mt-4 rounded-md">
                 {activeTab === "users" ? (
                     <TableData<UserItem>
                         header={UserHeader}
@@ -217,7 +217,7 @@ const AdminModule = () => {
                 ) : (
                     <TableData<SelectedProp>
                         header={ProductHeader}
-                        data={Filteredproducts}
+                        data={FilteredProducts}
                     />
                 )}
             </div>

@@ -1,5 +1,5 @@
 import { Calendar, Home, Inbox, Search, Settings } from "lucide-react";
-import { NavUser } from "../NavUser";
+import { NavUser } from "../components/NavUser";
 import {
     Sidebar,
     SidebarContent,
@@ -50,7 +50,7 @@ export type userData = {
     email: string;
     password: string;
     role: string;
-    companyName: string;
+    companyName?: string;
     createdAt: string;
     updatedAt: string;
     avatar: string;
