@@ -81,6 +81,39 @@ type ErrorProp = {
     message: string
 }
 
+type ChartProp = {
+    data: ChartDataprop[]
+    head: string
+}
+
+type ChartDataprop = {
+    name: string,
+    value:number
+}
+
+type AddOrderProp = {
+    productId: string,
+    productName: string,
+    user: string,
+    quantity: number,
+    cost: number,
+    OrderDate: Date,
+    status: string
+}
+
+type UpdateOrderProp = {
+    id: string,
+    productId: string,
+    productName: string,
+    user: string,
+    quantity: number,
+    cost: number,
+    OrderDate: string,
+    status: string,
+    createdAt: string,
+    updatedAt: string
+}
+
 export { base_url }
 
 export type { 
@@ -93,5 +126,9 @@ export type {
   UserItem,
   AddCartProp,
   UpdateCartProp,
-  ErrorProp
+  ErrorProp,
+  ChartProp,
+  ChartDataprop,
+  AddOrderProp,
+  UpdateOrderProp
 }
