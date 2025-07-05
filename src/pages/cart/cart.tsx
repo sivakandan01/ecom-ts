@@ -16,6 +16,7 @@ import { useSelector } from "react-redux";
 import { DialogBox } from "@/components/customComponent/DialogBox";
 import { toast } from "sonner";
 import { Toast } from "@/hooks/custom-toast/toast";
+import { CreateOrder } from "@/services/orderApi";
 
 const Cart = () => {
     const [cartData, setCartData] = useState<UpdateCartProp[]>([]);
@@ -86,6 +87,27 @@ const Cart = () => {
         );
     };
 
+    const PlaceOrder = async () => {
+        if(cartData.length){
+            await Promise.all(cartData.map((cartData) => 
+                CreateOrder({
+                    productId: cartData.productId, 
+                    productName: cartData.productName, 
+                    user: cartData.userId,
+                    quantity: cartData.quantity,
+                    cost: cartData.price,
+                    OrderDate: new Date(),
+                    status: "pending"
+                }))
+            )
+            await Promise.all(cartData.map((cartData) => DeleteCart(cartData.id)))
+            await FetchData()
+            toast(<Toast body="Order Placed Successfully." color="bg-green-200" />, { unstyled: true })
+        } else {
+            toast(<Toast body="No Items to place Order.Please Add Item" color="bg-red-200" />, { unstyled: true })
+        }
+    }
+
     const HandleCancel = () => {
         setOpenDialog(false)
     }
@@ -119,7 +141,10 @@ const Cart = () => {
                                 <p className="font-medium text-sm">Total:</p>
                                 <p>{total}</p>
                             </div>
-                            <button className="bg-green-500 hover:bg-blue-500 w-full rounded-md text-white py-1 items-center">
+                            <button 
+                                className="bg-green-500 hover:bg-blue-500 w-full rounded-md text-white py-1 items-center"
+                                onClick={() => PlaceOrder()}
+                            >
                                 PayNow
                             </button>
                         </div>

@@ -44,6 +44,7 @@ type HeaderItem = {
 type UserItem = {
   id: string,
   userName: string,
+  email: string,
   password: string,
   role: string,
   companyName?: string,

@@ -5,10 +5,10 @@ import {
     CardDescription,
     CardHeader,
 } from "@/components/ui/card";
-import type { HeaderItem, UserItem } from "@/lib/utils";
+import type { UserItem } from "@/lib/utils";
 import type { RootState, AppDispatch } from "@/store/store";
 import { useDispatch, useSelector } from "react-redux";
-import shadcnImg from "../assets/shdcn.jpg";
+import shadcnImg from "../../assets/shdcn.jpg";
 import { UpdateUser } from "@/services/userApi";
 import { useState } from "react";
 import { UserForm } from "@/components/form/userForm";
@@ -22,7 +22,7 @@ const Profile = () => {
 
     const dispatch = useDispatch<AppDispatch>();
 
-    const Header: HeaderItem[] = [
+    const Header: { value: string; key: keyof UserItem }[] = [
         { key: "userName", value: "Name" },
         { key: "email", value: "Email" },
         { key: "role", value: "Role" },

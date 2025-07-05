@@ -18,7 +18,7 @@ const Main = () => {
 
   const FetchData = async () => {
     try {
-      const response = await FetchProducts();
+      const response = await FetchProducts({type: "All", company: "All", search: ""});
       setProducts(response.data.data);
     } catch (err) {
       console.log("error fetching products", err);

@@ -1,16 +1,17 @@
 import { Routes, Route, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
-import LoginPage from "../pages/login";
-import Main from "../pages/main";
+import LoginPage from "../pages/login/login";
+import Main from "../pages/main/main";
 import { SidebarProvider } from "../components/ui/sidebar";
 import type { RootState } from "../store/store";
 import { MainLayout } from "../layout/mainLayout";
-import { CompanyModule } from "../pages/company";
-import { AdminModule } from "../pages/admin";
-import { Cart } from "../pages/cart";
-import { Profile } from "../pages/profile";
-import { History } from "@/pages/history";
+import { CompanyModule } from "../pages/company/company";
+import { AdminModule } from "../pages/admin/admin";
+import { Cart } from "../pages/cart/cart";
+import { Profile } from "../pages/profile/profile";
+import { History } from "@/pages/history/history";
+import { Orders } from "@/pages/orders/orders";
 
 const App = () => {
   const navigate = useNavigate();
@@ -38,6 +39,7 @@ const App = () => {
                 <Route path="/cart" element={<Cart />} />
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/history" element={<History />} />
+                <Route path="/orders" element={<Orders />} />
               </Routes>
             </MainLayout>
           }

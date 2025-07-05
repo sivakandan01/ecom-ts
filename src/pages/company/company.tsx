@@ -40,7 +40,7 @@ const CompanyModule = () => {
 
     const FetchData = async () => {
         try {
-            const response = await FetchProducts();
+            const response = await FetchProducts({type: "All", company: userData?.companyName});
             setProducts(response.data.data);
         } catch (err) {
             console.log("error fetching product", err);
@@ -175,11 +175,13 @@ const CompanyModule = () => {
                 </div>
             )}
             {openForm && (
+                <div className="w-full h-full">
                 <ProductForm
                     data={selectedRow}
                     save={HandleSubmit}
                     close={HandleCancel}
                 />
+                </div>
             )}
             <Dialog open={openDialog} onOpenChange={setOpenDialog}>
                 <DialogBox

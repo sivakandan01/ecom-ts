@@ -20,7 +20,7 @@ const TableData = <T,>({header, data, action} : TotalTableProp<T> ) => {
                 </TableRow>
             </TableHeader>
             <TableBody>
-                {data.map((dt, index: number) =>
+                {data?.map((dt, index: number) =>
                     <TableRow key={index} className="hover:bg-gray-200"> 
                         {header.map((head: HeaderItem, index: number) => 
                             <TableCell key={index}>{(dt as any)[head.value]}</TableCell>

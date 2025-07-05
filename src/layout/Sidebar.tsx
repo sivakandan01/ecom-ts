@@ -1,4 +1,4 @@
-import { Calendar, Home, Inbox, Search, Settings } from "lucide-react";
+import { Calendar, Home, Inbox, Settings, Store } from "lucide-react";
 import { NavUser } from "../components/NavUser";
 import {
     Sidebar,
@@ -15,7 +15,6 @@ import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-// Menu items.
 const items = [
     {
         title: "Main",
@@ -33,9 +32,9 @@ const items = [
         icon: Calendar,
     },
     {
-        title: "Search",
-        url: "/search",
-        icon: Search,
+        title: "Orders",
+        url: "/orders",
+        icon: Store,
     },
     {
         title: "History",
