@@ -8,12 +8,12 @@ pipeline {
             }
         }
 
-        stage('Clone Repo') {
-            steps {
-                git url: 'https://github.com/sivakandan01/ecom-ts.git',
-                    credentialsId: 'git-cred'
-            }
-        }
+        // stage('Clone Repo') {
+        //     steps {
+        //         git url: 'https://github.com/sivakandan01/ecom-ts.git',
+        //             credentialsId: 'git-cred'
+        //     }
+        // }
 
         stage('Test Access') {
             steps {
