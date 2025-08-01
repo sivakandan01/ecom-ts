@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Startup') {
             steps {
-                echo 'Jenkins Job Is Happening... 🚀'
+                echo 'Jenkins Job Is Happening...🚀'
             }
         }
 
