@@ -1,0 +1,24 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Startup') {
+            steps {
+                echo 'Jenkins Job Is Happening... 🚀'
+            }
+        }
+
+        stage('Clone Repo') {
+            steps {
+                git url: 'https://github.com/sivakandan01/ecom-ts.git',
+                    credentialsId: 'git-cred'
+            }
+        }
+
+        stage('Test Access') {
+            steps {
+                echo '✅ GitHub repo cloned successfully!'
+            }
+        }
+    }
+}

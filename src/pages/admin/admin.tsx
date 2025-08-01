@@ -15,7 +15,7 @@ import {
   type SelectedProp,
   type UserItem,
 } from "@/lib/utils";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/customComponent/Button";
 import { FetchOrders } from "@/services/orderApi";
 import { SearchBar } from "@/components/customComponent/searchBar";
@@ -42,7 +42,7 @@ const AdminModule = () => {
   const [tempProductType, setTempProductType] = useState<string>("All");
   const [tempProductName, setTempProductName] = useState<string>("");
 
-  console.log("activeTab", activeTab);
+  const filtersRef = useRef(false)
 
   const UserHeader: HeaderItem[] = [
     { key: "User Name", value: "userName" },
@@ -75,10 +75,12 @@ const AdminModule = () => {
       });
       if (userResponse) {
         setUsers(userResponse.data.data);
+        CompanyOptions(userResponse.data.data);
       }
-      return userResponse.data.data;
     } catch (err) {
       console.log(err);
+    } finally{
+        filtersRef.current = true
     }
   };
 
@@ -92,8 +94,8 @@ const AdminModule = () => {
 
       if (productResponse) {
         setProducts(productResponse.data.data);
+        ProductTypeOptions(productResponse.data.data);
       }
-      return productResponse.data.data;
     } catch (err) {
       console.log("error fetching data", err);
     }
@@ -108,7 +110,7 @@ const AdminModule = () => {
       });
       if (response.data.success) {
         setOrderData(response.data.data);
-        return response.data.data;
+        ProductNameOptions(response.data.data);
       } else {
         setOrderData([]);
         return [];
@@ -152,20 +154,7 @@ const AdminModule = () => {
 
   const FetchAllData = async () => {
     try {
-      const user = await FetchUserData();
-      if (user) {
-        CompanyOptions(user);
-      }
-
-      const products = await FetchProductData();
-      if (products) {
-        ProductTypeOptions(products);
-      }
-
-      const orders = await FetchUserOrder();
-      if (orders) {
-        ProductNameOptions(orders);
-      }
+      await FetchUserData();
     } catch (err) {
       console.log(err);
     }
@@ -176,6 +165,7 @@ const AdminModule = () => {
   }, []);
 
   useEffect(() => {
+    if(!filtersRef.current) return
     if (activeTab === "users") {
       FetchUserData();
     } else if (activeTab === "products") {
@@ -189,6 +179,7 @@ const AdminModule = () => {
     tempProductCompany,
     tempUserCompany,
     tempProductType,
+    orderSearch,
   ]);
 
   return (

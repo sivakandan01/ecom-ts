@@ -25,9 +25,9 @@ import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
   const [activeTab, setActiveTab] = useState<string>("Login");
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  const dispatch = useDispatch<AppDispatch>()
+  const dispatch = useDispatch<AppDispatch>();
 
   type LoginForm = { email: string; password: string };
   type RegisterForm = {
@@ -79,14 +79,19 @@ const LoginPage = () => {
   };
 
   const HandleSubmit = async () => {
-    if (activeTab === "Login") {
-      const response = await Login(loginData);
-      dispatch(setUser(response.data.data))
-      navigate('/')
-    } else {
-      const response = await Register(registerData);
-      console.log(response);
-      setActiveTab("Login");
+    try {
+      if (activeTab === "Login") {
+        const response = await Login(loginData)
+        if(response && response?.data){
+            dispatch(setUser(response?.data?.data));
+            navigate("/");
+        }
+      } else {
+        await Register(registerData);
+        setActiveTab("Login");
+      }
+    } catch (err) {
+      console.log(err);
     }
     HandleClear();
   };
@@ -130,8 +135,12 @@ const LoginPage = () => {
               </div>
             </CardContent>
             <CardFooter className="flex justify-between px-5">
-              <Button className="bg-gray-600" onClick={HandleClear}>Reset</Button>
-              <Button className="bg-blue-600" onClick={HandleSubmit}>Login</Button>
+              <Button className="bg-gray-600" onClick={HandleClear}>
+                Reset
+              </Button>
+              <Button className="bg-blue-600" onClick={HandleSubmit}>
+                Login
+              </Button>
             </CardFooter>
           </Card>
         </TabsContent>
@@ -193,8 +202,12 @@ const LoginPage = () => {
               )}
             </CardContent>
             <CardFooter className="flex justify-between px-5">
-              <Button className="bg-gray-600" onClick={HandleClear}>Reset</Button>
-              <Button className="bg-blue-600" onClick={HandleSubmit}>Register</Button>
+              <Button className="bg-gray-600" onClick={HandleClear}>
+                Reset
+              </Button>
+              <Button className="bg-blue-600" onClick={HandleSubmit}>
+                Register
+              </Button>
             </CardFooter>
           </Card>
         </TabsContent>

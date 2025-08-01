@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react"
 import { SearchBar } from "@/components/customComponent/searchBar"
 import { useSelector } from "react-redux"
